@@ -5,6 +5,6 @@ Here are examples of two child themes. One (adr folder) is for WordPress [Twenty
 
 These examples show an ad in header and other ads along with content.
 
-For your specific theme, you need to modify the child theme's style.css by replacing Template value with your theme name. You can also customize your child themes parts and function.php based on your requirements. 
+For your specific theme, you need to modify the child theme's style.css by replacing Template value with your theme name. You can also customize your child theme parts and function.php based on your requirements. 
 
 To install a child theme, zip the folder, add it to your workpress site and activate it.
