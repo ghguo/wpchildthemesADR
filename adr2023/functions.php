@@ -248,8 +248,8 @@ document.addEventListener("DOMContentLoaded", function(event){
 
 add_action( 'wp_enqueue_scripts', 'themeslug_enqueue_script' );
 
-add_filter('the_content', 'mte_add_incontent_ad');
-function mte_add_incontent_ad($content)
+add_filter('the_content', 'add_incontent_adr');
+function add_incontent_adr($content)
 {   if(is_single()){
       $content_block = explode('<p>',$content);
       if(!empty($content_block[2]))

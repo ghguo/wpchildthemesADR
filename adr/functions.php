@@ -155,9 +155,9 @@ function bidFunc(keywrds, cats)
 		  cpm: 0.9
 		}
 	  }]
-	}/*,
+	},
 	{
-	  code: \'/21901351985/header-bid-tag-0\',
+	  code: \'div-adrclassic\',
 	  mediaTypes: {
 		banner: {
 		  sizes: [[728, 90]]
@@ -171,14 +171,14 @@ function bidFunc(keywrds, cats)
 		}
 	  }]
 	}
-	*/];
+	];
 	
 	googletag.cmd.push(function() {
 	  var slot1 = googletag.defineSlot(\'/21901351985/native_nature\', \'fluid\', \'div-adrnatural\').addService(googletag.pubads());
 	  var slot1 = googletag.defineSlot(\'/21901351985/native_horizontal\', \'fluid\', \'div-adrhorizontal\').addService(googletag.pubads());
 	  var slot1 = googletag.defineSlot(\'/21901351985/native_square\', \'fluid\', \'div-adrsquare\').addService(googletag.pubads());
 	  var slot1 = googletag.defineSlot(\'/21901351985/native_vertical\', \'fluid\', \'div-adrvertical\').addService(googletag.pubads());
-//	  var slot2 = googletag.defineSlot(\'/21901351985/header-bid-tag-0\', [[728, 90]], \'/21901351985/header-bid-tag-0\').addService(googletag.pubads());
+	  var slot2 = googletag.defineSlot(\'/21901351985/header-bid-tag-0\', [[728, 90]], \'div-adrclassic\').addService(googletag.pubads());
 	  googletag.pubads().disableInitialLoad();
 	  googletag.pubads().enableSingleRequest();
 	  googletag.enableServices();
@@ -244,12 +244,13 @@ document.addEventListener("DOMContentLoaded", function(event){
   h.send(pload)
 });');
     // here you can enqueue more js / css files 
+    //wp_enqueue_style('adr-style-v1', get_stylesheet_uri());
 }
 
 add_action( 'wp_enqueue_scripts', 'themeslug_enqueue_script' );
 
-add_filter('the_content', 'mte_add_incontent_ad');
-function mte_add_incontent_ad($content)
+add_filter('the_content', 'add_incontent_adr');
+function add_incontent_adr($content)
 {   if(is_single()){
       $content_block = explode('<p>',$content);
       if(!empty($content_block[2]))
@@ -258,7 +259,7 @@ function mte_add_incontent_ad($content)
       for($i=1;$i<count($content_block);$i++)
       {   $content_block[$i] = '<p>'.$content_block[$i];
       }
-      $content = '<div id="div-adrnatural"></div><div id="div-adrvertical" style="width:25%;float:right;top:40px;margin-left:15px !important;"></div>' . implode('',$content_block);
+      $content = '<div id="div-adrnatural" style="position:fixed;bottom:0;width:50%;left:25%;right:25%;"></div><div id="div-adrvertical" style="width:25%;float:right;top:40px;margin-left:15px !important;"></div>' . implode('',$content_block) . '<div id="div-adrhorizontal"></div>';
    }
    return $content;   
 }
